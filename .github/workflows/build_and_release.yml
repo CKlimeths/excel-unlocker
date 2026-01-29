@@ -22,37 +22,30 @@ jobs:
         node-version: '22'
         cache: 'npm'
 
+    - name: Setup UPX
+      run: winget install --id UPX.UPX
+
     - name: Install dependencies
       run: npm ci
 
     - name: Run tests
       run: npm test
 
-    - name: Build TypeScript
-      run: npm run build
-
-    - name: Package with astra-cli
-      run: npm run package
-
-    - name: Compress with upx
-      run: npm run compress
-      continue-on-error: true  # upx可能在某些文件上失败，但不是致命错误
+    - name: Full Build
+      run: npm run full-build
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: excel-unlocker
-        path: |
-          dist/excel-unlocker.exe
-          dist/*.js
+        path: dist/excel-unlocker.exe
         retention-days: 7
 
     - name: Create Release
       if: startsWith(github.ref, 'refs/tags/v')
       uses: softprops/action-gh-release@v1
       with:
-        files: |
-          dist/excel-unlocker.exe
+        files: dist/excel-unlocker.exe
         generate_release_notes: true
         draft: false
         prerelease: false
