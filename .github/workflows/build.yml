@@ -18,8 +18,8 @@ jobs:
         with:
           node-version: 22
 
-      - name: Setup UPX
-        run: winget install --id UPX.UPX --accept-source-agreements --accept-package-agreements
+      - name: Install UPX
+        uses: samyfodil/upx-action@v1
 
       - name: Install npm Dependencies
         run: npm ci
