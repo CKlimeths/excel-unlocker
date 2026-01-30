@@ -1,48 +1,27 @@
 {
-  "name": "excel-unlocker",
-  "version": "0.1.0",
-  "description": "xlsx工作表保护移除软件 - 命令行工具，支持工作表保护移除和添加",
-  "main": "dist/main.js",
-  "bin": {
-    "excel-unlocker": "./dist/main.js"
-  },
-  "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch",
-    "start": "node dist/main.js",
-    "dev": "ts-node src/main.ts",
-    "package": "astra-cli bundle --platform windows --arch x64 --input dist/main.js --output dist/excel-unlocker.exe",
-    "compress": "upx --best --lzma dist/excel-unlocker.exe",
-    "full-build": "npm run build && npm run package && npm run compress",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "excel",
-    "xlsx",
-    "worksheet",
-    "protection",
-    "unlock",
-    "password",
-    "remove"
-  ],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "commander": "^12.1.0",
-    "exceljs": "^4.4.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.2",
-    "typescript": "^5.7.3",
-    "ts-node": "^10.9.2",
-    "astra-cli": "^1.3.1"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "files": [
-    "dist/",
-    "README.md",
-    "LICENSE"
-  ]
+    "name": "excel-unlocker",
+    "author": "CKlimeths",
+    "description": "xlsx工作表保护移除软件 - 命令行工具，支持工作表保护移除和添加",
+    "type": "module",
+    "version": "0.1.0",
+    "scripts": {
+        "watch": "tsc --watch",
+        "dev": "ts-node src/main.ts",
+        "compile": "astra build src/main.ts -o dist -n node_v22.15.1-win-x64",
+        "compress": "upx dist/excel-unlocker.exe",
+        "full-build": "npm run compile && npm run compress"
+    },
+    "dependencies": {
+        "commander": "^12.1.0",
+        "exceljs": "^4.4.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.2",
+        "typescript": "^5.7.3",
+        "ts-node": "^10.9.2",
+        "astra-cli": "^1.3.1"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
 }
