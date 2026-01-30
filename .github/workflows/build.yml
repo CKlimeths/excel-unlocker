@@ -2,7 +2,6 @@ name: Build
 
 on:
   push:
-    branches: [main]
     tags: ["v*"]
   workflow_dispatch: # 允许手动触发
 
@@ -20,7 +19,7 @@ jobs:
           node-version: 22
 
       - name: Setup UPX
-        run: winget install --id UPX.UPX
+        run: winget install --id UPX.UPX --accept-source-agreements --accept-package-agreements
 
       - name: Install npm Dependencies
         run: npm ci
