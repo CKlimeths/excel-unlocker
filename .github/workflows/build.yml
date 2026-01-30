@@ -1,0 +1,35 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Setup UPX
+        run: winget install --id UPX.UPX
+
+      - name: Install npm Dependencies
+        run: npm ci
+
+      - name: Full Build
+        run: npm run full-build
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: full-build binary
+          path: dist/excel-unlocker.exe
