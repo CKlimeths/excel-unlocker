@@ -19,7 +19,7 @@ jobs:
           node-version: 22
 
       - name: Install UPX
-        uses: samyfodil/upx-action@v1
+        uses: samyfodil/upx-action@v1.0.3
 
       - name: Install npm Dependencies
         run: npm ci
