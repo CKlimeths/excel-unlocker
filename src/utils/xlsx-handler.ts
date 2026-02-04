@@ -1,7 +1,7 @@
 import * as ExcelJS from "exceljs"
 import * as path from "path"
 import * as fs from "fs"
-import { ExcelProcessingResult, OperationType } from "../types/index.js"
+import { ExcelProcessingResult, OperationType } from "@/types/index.js"
 
 /**
  * 检查文件是否是有效的xlsx文件

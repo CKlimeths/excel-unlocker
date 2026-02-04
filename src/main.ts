@@ -1,7 +1,8 @@
 import { Command } from "commander"
 import * as path from "path"
 import * as fs from "fs"
-import { processExcelFile } from "./utils/xlsx-handler.js"
+import * as readline from "readline"
+import { processExcelFile } from "@/utils/xlsx-handler.js"
 
 const program = new Command()
 
@@ -47,19 +48,16 @@ program
 
             // 如果未提供密码，提示用户输入
             if (!password) {
-                const readline = require("readline").createInterface({
+                const rl = readline.createInterface({
                     input: process.stdin,
                     output: process.stdout,
                 })
 
                 password = await new Promise((resolve) => {
-                    readline.question(
-                        "请输入工作表保护密码: ",
-                        (input: string) => {
-                            readline.close()
-                            resolve(input)
-                        },
-                    )
+                    rl.question("请输入工作表保护密码: ", (input: string) => {
+                        rl.close()
+                        resolve(input)
+                    })
                 })
 
                 if (!password) {
@@ -157,17 +155,15 @@ process.on("uncaughtException", (error) => {
     process.exit(1)
 })
 
-process.on("unhandledRejection", (error: Error) => {
-    console.error(`❌ 未处理的Promise拒绝: ${error.message}`)
+process.on("unhandledRejection", (error) => {
+    console.error(`❌ 未处理的Promise拒绝: ${(error as Error).message}`)
     process.exit(1)
 })
 
 // 启动程序
-if (require.main === module) {
-    main().catch((error) => {
-        console.error(`❌ 程序启动失败: ${error.message}`)
-        process.exit(1)
-    })
-}
+main().catch((error) => {
+    console.error(`❌ 程序启动失败: ${error.message}`)
+    process.exit(1)
+})
 
 export { program }

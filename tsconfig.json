@@ -9,19 +9,16 @@
 
         // Environment Settings
         "module": "nodenext",
+        "moduleResolution": "nodenext",
         "target": "esnext",
-        "types": ["node"],
-        // For nodejs:
-        "lib": ["esnext"],
 
-        // Other Outputs
+        //alias
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+
+        //source map, support debugging and breakpoint
         "sourceMap": true,
-        "declaration": true,
-        "declarationMap": true,
-
-        // Stricter Typechecking Options
-        "noUncheckedIndexedAccess": true,
-        "exactOptionalPropertyTypes": true,
 
         // Recommended Options
         "strict": true,
