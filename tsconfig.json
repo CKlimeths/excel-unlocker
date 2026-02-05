@@ -17,9 +17,6 @@
             "@/*": ["./src/*"]
         },
 
-        //source map, support debugging and breakpoint
-        "sourceMap": true,
-
         // Recommended Options
         "strict": true,
         "allowJs": false

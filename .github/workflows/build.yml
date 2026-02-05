@@ -13,22 +13,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
-      - name: Install UPX
-        uses: samyfodil/upx-action@v1.0.3
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
 
-      - name: Install npm Dependencies
-        run: npm ci
+      - name: Build Binary
+        run: bun run build
 
-      - name: Full Build
-        run: npm run full-build
-
-      - name: Upload a Build Artifact
+      - name: Upload Build Artifact
         uses: actions/upload-artifact@v6
         with:
-          name: full-build binary
+          name: excel-unlocker
           path: dist/excel-unlocker.exe
