@@ -101,23 +101,6 @@ excel-unlocker/
 # 安装依赖
 bun install
 
-# 构建项目
-bun run build
-
 # 运行程序
 bun start
-```
-
-## 构建与部署
-
-### GitHub Actions 自动化构建
-项目配置了 GitHub Actions 工作流，自动打包为 Windows 可执行文件
-
-### 手动构建
-```bash
-# 安装依赖
-bun ci
-
-# 构建二进制包
-bun run build
 ```
