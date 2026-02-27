@@ -3,7 +3,7 @@
     "author": "CKlimeths",
     "description": "xlsx工作表保护移除软件 - 命令行工具，支持工作表保护移除和添加",
     "type": "module",
-    "module": "index.ts",
+    "module": "./src/main.ts",
     "private": true,
     "version": "0.1.0",
     "scripts": {

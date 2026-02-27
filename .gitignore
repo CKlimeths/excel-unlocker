@@ -1,39 +1,13 @@
 # Dependencies
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Build outputs
 dist/
-*.exe
-*.zip
-*.tar.gz
 
-# TypeScript
-*.tsbuildinfo
-
-# IDE files
+# VSCode files
 .vscode/
-.idea/
-*.swp
-*.swo
-*~
 
 # OS files
+desktop.ini
 .DS_Store
 Thumbs.db
-
-# Temp files
-temp/
-tmp/
-*.tmp
-
-# Logs
-logs/
-*.log
-
-# Environment variables
-.env
-.env.local
-.env.*.local
