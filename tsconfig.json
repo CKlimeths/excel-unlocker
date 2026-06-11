@@ -12,6 +12,9 @@
         "moduleResolution": "nodenext",
         "target": "esnext",
 
+        // Bun types（包含 Node.js 兼容类型）
+        "types": ["bun"],
+
         //alias
         "paths": {
             "@/*": ["./src/*"]
